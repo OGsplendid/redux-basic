@@ -1,0 +1,12 @@
+export const ADD_TASK = 'CHANGE_NUMBER';
+export const SET_USER_VALUE = 'SET_USER_VALUE';
+export const EDIT_TASK = 'EDIT_TASK';
+export const DELETE_TASK = 'DELETE_TASK';
+export const SET_ONEDIT_TASK = 'SET_ONEDIT_TASK';
+export const CANCEL_EDIT_TASK = 'CANCEL_EDIT_TASK';
+export const SET_ON_EDIT_FORM = 'SET_ON_EDIT_FORM';
+export const SET_INITIAL_FORM = 'SET_INITIAL_FORM';
+export const MODIFY_TASK = 'MODIFY_TASK';
+export const MEMORIZE_ONEDIT_ID = 'MEMORIZE_ONEDIT_ID';
+export const FILTER_TASKS = 'FILTER_TASKS';
+export const SET_CURRENT_FILTER = 'SET_CURRENT_FILTER';
