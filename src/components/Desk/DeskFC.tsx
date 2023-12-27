@@ -2,7 +2,7 @@ import { useDispatch, useSelector } from "react-redux"
 import { Task } from "../Task/Task"
 import { IFilter, IInitialState, TTask } from "../../models/models";
 import { DELETE_TASK, MEMORIZE_ONEDIT_ID, SET_ONEDIT_TASK, SET_ON_EDIT_FORM, } from "../../redux/actions";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 export const DeskFC = () => {
   const dispatch = useDispatch();
@@ -12,8 +12,7 @@ export const DeskFC = () => {
   const { currentFilter } = useSelector(
     (state: {filter: IFilter}) => state.filter
   )
-  const initialState = tasks.filter((t) => t.toLowerCase().includes(currentFilter))
-  const { currentTasks, setCurrentTasks } = useState<TTask>(initialState);
+  const [currentTasks, setCurrentTasks] = useState<TTask[]>([]);
 
   const handleEdit = (id: string) => {
     const item = tasks.find((item) => item.id === id);
@@ -46,10 +45,18 @@ export const DeskFC = () => {
     dispatch(action);
   }
 
+  useEffect(() => {
+    if (currentFilter.trim().length) {
+      setCurrentTasks(tasks.filter((t) => t.task.toLowerCase().includes(currentFilter)));
+    } else {
+      setCurrentTasks(tasks);
+    }
+  }, [tasks, currentFilter])
+
   return (
     <ul className="deskfc-wrapper">
       <h3>Functional Component</h3>
-      {currentTasks.map((t) => (
+      {currentTasks.map((t: TTask) => (
         <Task key={t.id} item={t} onEdit={handleEdit} onDelete={handleDelete} />
       ))}
     </ul>

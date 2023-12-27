@@ -54,7 +54,6 @@ export const InputForm = () => {
       sum: userValue.sum,
     }
     const copy = [...tasks];
-    console.log(copy)
     copy.splice(itemIndex, 1, modified);
     const action = {
       type: MODIFY_TASK,

@@ -15,6 +15,7 @@ export const Filter = () => {
             type: SET_CURRENT_FILTER,
             payload: valueLowercased,
         }
+        console.log(valueLowercased)
         dispatch(action);
     }
 
